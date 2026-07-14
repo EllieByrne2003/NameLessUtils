@@ -1,0 +1,4 @@
+Make an install script to work with ubuntu, arch etc
+Figure out how to use this on nix
+
+Pass a logger to each loading function in files
