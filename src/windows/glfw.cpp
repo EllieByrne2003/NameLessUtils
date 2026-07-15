@@ -22,7 +22,7 @@
 
 std::mutex contextMutex;
 
-bool initialised = false;
+static bool initialised = false;
 
 bool NLUT::intialiseGLFW(Logger &logger) {
     static std::mutex initMutex;

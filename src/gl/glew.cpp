@@ -19,7 +19,7 @@
 
 // Type aliases
 
-bool initialised = false;
+static bool initialised = false;
 
 bool NLUT::initialiseGLEW(Logger &logger, GLFWwindow *window) {
     static std::mutex initMutex;
