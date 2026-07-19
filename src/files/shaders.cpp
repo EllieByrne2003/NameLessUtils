@@ -23,7 +23,7 @@
 typedef unsigned int GLuint;
 typedef int GLint;
 
-GLuint NLUT::createShader(const std::string &vertexPath, const std::string &fragmentPath) {
+GLuint NLUT::createShader(const std::filesystem::path &vertexPath, const std::filesystem::path &fragmentPath) {
     // Load files into strings
     std::string vertexCode;
     std::ifstream vertexFile(vertexPath);
@@ -49,14 +49,22 @@ GLuint NLUT::createShader(const std::string &vertexPath, const std::string &frag
         return 0;
     }
 
+    return createShader(vertexCode.c_str(), fragmentCode.c_str());
+}
+
+GLuint NLUT::createShader(const std::string &vertexCode, const std::string &fragmentCode) {
+    return createShader(vertexCode.c_str(), fragmentCode.c_str());
+}
+
+GLuint NLUT::createShader(const char *const vertexCode, const char *const fragmentCode) {
+
     // Error checking info
     int ok = 0;
     int infoLogLength;
 
     // Compile vertex shader
     unsigned int vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-    const char *const vertexCodePtr = vertexCode.c_str();
-    glShaderSource(vertexShaderID, 1, &vertexCodePtr, NULL);
+    glShaderSource(vertexShaderID, 1, &vertexCode, NULL);
     glCompileShader(vertexShaderID);
 
     // Check vertex compilation
@@ -76,8 +84,7 @@ GLuint NLUT::createShader(const std::string &vertexPath, const std::string &frag
 
     // Compile fragment shader
     unsigned int fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-    const char *const fragmentCodePtr = fragmentCode.c_str();
-    glShaderSource(fragmentShaderID, 1, &fragmentCodePtr, NULL);
+    glShaderSource(fragmentShaderID, 1, &fragmentCode, NULL);
     glCompileShader(fragmentShaderID);
 
     // Check fragment compilation
