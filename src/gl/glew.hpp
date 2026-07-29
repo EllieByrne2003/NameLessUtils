@@ -19,5 +19,5 @@ struct GLFWwindow;
 
 namespace NLUT {
     bool initialiseGLEW(Logger &logger, GLFWwindow *window);
-    bool GLEWInitialized();
+    bool GLEWInitialised();
 };

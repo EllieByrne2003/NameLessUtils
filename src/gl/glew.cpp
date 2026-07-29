@@ -19,6 +19,7 @@
 
 // Type aliases
 
+
 static bool initialised = false;
 
 bool NLUT::initialiseGLEW(Logger &logger, GLFWwindow *window) {
@@ -31,16 +32,16 @@ bool NLUT::initialiseGLEW(Logger &logger, GLFWwindow *window) {
 
     claimContext(window);
 
-    glewExperimental = true;
     if(glewInit() != GLEW_OK) {
         logger.addError("Failed to initialise GLEW.");
     } else {
         initialised = true;
     }
 
+    releaseContext();
     return initialised;
 }
 
-bool NLUT::GLEWInitialized() {
+bool NLUT::GLEWInitialised() {
     return initialised;
 }

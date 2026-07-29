@@ -20,7 +20,7 @@
 // Type aliases
 
 
-std::mutex contextMutex;
+static std::mutex contextMutex;
 
 static bool initialised = false;
 

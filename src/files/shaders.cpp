@@ -57,7 +57,6 @@ GLuint NLUT::createShader(const std::string &vertexCode, const std::string &frag
 }
 
 GLuint NLUT::createShader(const char *const vertexCode, const char *const fragmentCode) {
-
     // Error checking info
     int ok = 0;
     int infoLogLength;
