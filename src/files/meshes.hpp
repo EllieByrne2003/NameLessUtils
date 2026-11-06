@@ -5,6 +5,7 @@
 #include <string>
 
 // Includes from third party libraries
+#define GLM_FORCE_EXPLICIT_CTOR
 #include <glm/glm.hpp>
 using namespace glm;
 
